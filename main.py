@@ -33,5 +33,10 @@ while is_on:
     # detect collision with paddles and bounce back
     if (pong_ball.distance(paddle_right)<60 and pong_ball.xcor()>320) or (pong_ball.distance(paddle_left)<60 and pong_ball.xcor()< -320):
         pong_ball.bounce_x()
+    # detect if any paddle misses the ball
+    if pong_ball.xcor()<-380:
+        pong_ball.reset()
+    elif pong_ball.xcor()>380:
+        pong_ball.reset()
 
 screen.exitonclick()
