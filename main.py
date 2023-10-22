@@ -1,5 +1,7 @@
 from turtle import Turtle, Screen
 from paddle import Paddle
+from ball import Ball
+import time
 
 # 1) main screen setup
 screen=Screen()
@@ -13,7 +15,7 @@ screen.listen()
 
 paddle_right=Paddle((350,0))
 paddle_left=Paddle((-350,0))
-
+pong_ball=Ball()
 screen.onkey(paddle_right.paddle_up, 'Up')
 screen.onkey(paddle_right.paddle_down, 'Down')
 screen.onkey(paddle_left.paddle_up, 'w')
@@ -22,6 +24,7 @@ screen.onkey(paddle_left.paddle_down, 's')
 
 is_on=True
 while is_on:
+    time.sleep(0.1)
     screen.update()
-
+    pong_ball.move()
 screen.exitonclick()
