@@ -27,7 +27,11 @@ while is_on:
     time.sleep(0.1)
     screen.update()
     pong_ball.move()
-    if pong_ball.ycor()>290 or pong_ball.ycor()<-290:
-        pong_ball.bounce()
+    # detect collision with top and bottom walls
+    if pong_ball.ycor()>285 or pong_ball.ycor()<-285:
+        pong_ball.bounce_y()
+    # detect collision with paddles and bounce back
+    if (pong_ball.distance(paddle_right)<60 and pong_ball.xcor()>320) or (pong_ball.distance(paddle_left)<60 and pong_ball.xcor()< -320):
+        pong_ball.bounce_x()
 
 screen.exitonclick()
